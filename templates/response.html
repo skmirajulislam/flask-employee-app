@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+
+{% block body %}
+<div class="container my-5">
+    <div class="form-group d-flex flex-column align-items-center">
+        <h2 class="mb-3">Example output JSON</h2>
+        <textarea class="form-control mb-3" rows="10" style="width: 100%; max-width: 600px;">
+            {{ data | tojson(indent=4) }}
+        </textarea>
+        <a href="/" class="btn btn-success btn-sm">Home</a>
+    </div>
+</div>
+
+{% endblock body %}

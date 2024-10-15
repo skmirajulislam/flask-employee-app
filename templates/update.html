@@ -1,0 +1,48 @@
+{% extends 'index.html' %}
+
+{% block body %}
+<div class="container my-5">
+    <h2>Update Record</h2>
+    <table class="table table-dark table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Sno</th>
+                <th scope="col">Name</th>
+                <th scope="col">Designation</th>
+                <th scope="col">Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">{{ details.id }}</th>
+                <td>{{ details.name }}</td>
+                <td>{{ details.designation }}</td>
+                <td>{{ details.salary }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <form action="/update/{{ details.id }}" method="POST">
+        <div class="form-floating mb-3 w-25">
+            <input type="text" class="form-control" id="floatingName" placeholder="John Doe" name="name"
+                value="{{ details.name }}" required>
+            <label for="floatingName">Name</label>
+        </div>
+
+        <div class="form-floating mb-3 w-25">
+            <input type="text" class="form-control" id="floatingDesignation" placeholder="Designation"
+                name="designation" value="{{ details.designation }}" required>
+            <label for="floatingDesignation">Designation</label>
+        </div>
+
+        <div class="form-floating mb-3 w-25">
+            <input type="number" class="form-control" id="floatingSalary" placeholder="Salary" name="salary"
+                value="{{ details.salary }}" required>
+            <label for="floatingSalary">Salary</label>
+        </div>
+
+        <button type="submit" class="btn btn-warning btn-sm mx-1">Update</button>
+        <a href="/" class="btn btn-danger btn-sm mx-1">Cancel</a>
+    </form>
+</div>
+{% endblock body %}
