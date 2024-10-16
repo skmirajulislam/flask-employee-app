@@ -79,7 +79,7 @@ def details():
         ]
         return render_template('response.html', data=employees_list)
     else:
-        return render_template('response.html', data={'message': 'No employees found'})
+        return render_template('error.html')
 
 
 if __name__ == '__main__':

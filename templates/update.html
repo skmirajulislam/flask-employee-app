@@ -23,19 +23,19 @@
     </table>
 
     <form action="/update/{{ details.id }}" method="POST">
-        <div class="form-floating mb-3 w-25">
+        <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingName" placeholder="John Doe" name="name"
                 value="{{ details.name }}" required>
             <label for="floatingName">Name</label>
         </div>
 
-        <div class="form-floating mb-3 w-25">
+        <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingDesignation" placeholder="Designation"
                 name="designation" value="{{ details.designation }}" required>
             <label for="floatingDesignation">Designation</label>
         </div>
 
-        <div class="form-floating mb-3 w-25">
+        <div class="form-floating mb-3">
             <input type="number" class="form-control" id="floatingSalary" placeholder="Salary" name="salary"
                 value="{{ details.salary }}" required>
             <label for="floatingSalary">Salary</label>
