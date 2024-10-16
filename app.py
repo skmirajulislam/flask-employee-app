@@ -1,8 +1,9 @@
 from flask import Flask, render_template, redirect, request
 from flask_sqlalchemy import SQLAlchemy
 
+
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://db1_owner:OzX4nQUMLV6v@ep-floral-leaf-a182z0z7.ap-southeast-1.aws.neon.tech/db1?sslmode=require"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -25,7 +26,14 @@ def insert_user():
         designation = request.form.get('designation')
         salary = request.form.get('salary')
 
-        new_employee = Employees(name=name, designation=designation, salary=float(salary))
+        if salary and salary.strip():
+            salary = float(salary)
+        else:
+            return "Error: Salary cannot be empty", 400
+        
+        new_employee = Employees(
+            name=name, designation=designation, salary=float(salary) # type: ignore
+        ) 
         db.session.add(new_employee)
         db.session.commit()
         return redirect('/')
@@ -78,3 +86,4 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()
     app.run(debug=True, port=8000)
+
